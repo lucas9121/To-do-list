@@ -8,6 +8,7 @@ export default function App(){
         title: '',
         completed: false
     })
+    const [completed, setCompleted] = useState([])
 
     const handleChange = (event) => {
         // adding [] around the event.target.name makes the name variable in the target event the key of the object that is being made. So in this case the name is title because of the input name
@@ -16,7 +17,15 @@ export default function App(){
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        setToDo([...toDoListData, newData] )
+        setToDo([...toDo, newData])
+    }
+
+    const completedStatus = () => {
+        toDo.forEach((todo) => {
+            if(todo.completed === true){
+                setCompleted([...completed, todo])
+            }
+        })
     }
 
     // const addData = () => {
@@ -25,9 +34,13 @@ export default function App(){
     // }
 
     useEffect(() => {
+        completedStatus()
+        console.log('todoListaData is')
         console.log(toDoListData)
+        console.log('data hook is ')
         console.log(toDo)
-        // console.log(input)
+        console.log('new data hook is ')
+        console.log(newData)
     }, [toDo])
 
     return(
@@ -50,15 +63,25 @@ export default function App(){
             <div>
                 <h2>To do Items: </h2>
                 <ul>
-                    {toDoListData.map((toDo, idx) => {
+                    {toDo.map((todo, i) => {
+                        console.log('ForEach here!!!!!!!!!!!!')
+                        console.log(todo.title)
+                        console.log(todo.completed)
                         return(
-                            <li key={idx}>{toDo.title}</li>
+                            todo.completed === false ?
+                            <li key={i}>{todo.title} {todo.completed === true ? <button>Remove</button> : <button>Completed</button>} </li> : null
                         )
                     })}
-                    {toDo.forEach((todo, i) => {
-                        console.log(todo.title)
+                </ul>
+            </div>
+            <div>
+                <h2>Completed:</h2>
+                <ul>
+                    {completed.map((obj, idx) => {
+                        console.log('completed hook!!!!!!!!')
+                        console.log(obj.title)
                         return(
-                            <li key={i}>{todo.title} Hello</li>
+                            <li key={idx}>{obj.title} <button>Remove</button></li>
                         )
                     })}
                 </ul>
