@@ -1,3 +1,6 @@
+* {
+    box-sizing: border-box;
+}
 body {
     background-color: aliceblue;
     min-height: 100vh;
@@ -13,8 +16,38 @@ body {
     background-color: white;
     padding: 30px;
     border-radius: 10px;
+    width: 105%;
 }
 
 h1 {
     color: midnightblue;
+}
+
+#todo {
+    width: 100%;
+    color: midnightblue;
+    background-color: aliceblue;
+    font-size: x-large;
+    border-radius: 7px;
+    padding: 2% 3%;
+    font-weight: bolder;
+    font-family: cursive;
+    
+}
+
+h2 {
+    color: midnightblue;
+}
+
+li {
+    font-size: 1.25rem;
+    margin: 3% 0;
+}
+
+button {
+    background-color: midnightblue;
+    color: white;
+    padding: 1%;
+    text-transform: uppercase;
+    margin-left: 2%;
 }
