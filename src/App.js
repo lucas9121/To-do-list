@@ -32,11 +32,11 @@ export default function App(){
         })
     }
     // const taskBtn = (task) => {
-    //     toDo.forEach((todo) => {
-    //         if(todo.find((obj) => obj === task)){
-
-    //         }
-    //     })
+    //     console.log('function works')
+    //     let item = toDo.find(obj => obj === task)
+    //     if(item){
+    //         console.log('here')
+    //     }
     // }
 
     // const addData = () => {
