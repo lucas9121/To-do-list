@@ -8,7 +8,8 @@ export default function App(){
         title: '',
         completed: false
     })
-    const [completed, setCompleted] = useState([])
+    const [taskComplete, setTaskComplete] = useState([])
+    const [complete, setComplete] = useState(true)
 
     const handleChange = (event) => {
         // adding [] around the event.target.name makes the name variable in the target event the key of the object that is being made. So in this case the name is title because of the input name
@@ -22,10 +23,21 @@ export default function App(){
 
     const completedStatus = () => {
         toDo.forEach((todo) => {
-            if(todo.completed === true){
-                setCompleted([...completed, todo])
+            // checks if task is already in the array
+            if(taskComplete.find((obj) => obj === todo)){
+                return
+            } else if(todo.completed === true){
+                setTaskComplete([...taskComplete, todo])
             }
         })
+    }
+    const taskBtn = (task) => {
+        // toDo.forEach((todo) => {
+        //     if(todo.find((obj) => obj === task)){
+
+        //     }
+        // })
+        return task
     }
 
     // const addData = () => {
@@ -53,10 +65,11 @@ export default function App(){
                     <input
                     type="text"
                     name="title"
+                    id="todo"
                     value={newData.title}
                     onChange={handleChange}
                     />
-                    <button type="submit">submit</button>
+                    <button type="submit" style={{display: 'none'}} >submit</button>
                 </form>
             </div>
             <br/>
@@ -69,7 +82,8 @@ export default function App(){
                         console.log(todo.completed)
                         return(
                             todo.completed === false ?
-                            <li key={i}>{todo.title} {todo.completed === true ? <button>Remove</button> : <button>Completed</button>} </li> : null
+                            <li key={i}>{todo.title} <button onClick={taskBtn(todo)} >Completed</button> </li> : 
+                            null
                         )
                     })}
                 </ul>
@@ -77,11 +91,11 @@ export default function App(){
             <div>
                 <h2>Completed:</h2>
                 <ul>
-                    {completed.map((obj, idx) => {
+                    {taskComplete.map((obj, idx) => {
                         console.log('completed hook!!!!!!!!')
                         console.log(obj.title)
                         return(
-                            <li key={idx}>{obj.title} <button>Remove</button></li>
+                            <li key={idx}>{obj.title} <button onClick={(task) => obj.title = 'Hello' & console.log(obj)} >Remove</button></li>
                         )
                     })}
                 </ul>
