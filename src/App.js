@@ -9,7 +9,7 @@ export default function App(){
         completed: false
     })
     const [taskComplete, setTaskComplete] = useState([])
-    const [complete, setComplete] = useState(true)
+    // const [complete, setComplete] = useState(true)
 
     const handleChange = (event) => {
         // adding [] around the event.target.name makes the name variable in the target event the key of the object that is being made. So in this case the name is title because of the input name
@@ -31,14 +31,13 @@ export default function App(){
             }
         })
     }
-    const taskBtn = (task) => {
-        // toDo.forEach((todo) => {
-        //     if(todo.find((obj) => obj === task)){
+    // const taskBtn = (task) => {
+    //     toDo.forEach((todo) => {
+    //         if(todo.find((obj) => obj === task)){
 
-        //     }
-        // })
-        return task
-    }
+    //         }
+    //     })
+    // }
 
     // const addData = () => {
     //     setNewData(input)
@@ -82,7 +81,7 @@ export default function App(){
                         console.log(todo.completed)
                         return(
                             todo.completed === false ?
-                            <li key={i}>{todo.title} <button onClick={taskBtn(todo)} >Completed</button> </li> : 
+                            <li key={i}>{todo.title} <button>Completed</button> </li> : 
                             null
                         )
                     })}
@@ -95,7 +94,7 @@ export default function App(){
                         console.log('completed hook!!!!!!!!')
                         console.log(obj.title)
                         return(
-                            <li key={idx}>{obj.title} <button onClick={(task) => obj.title = 'Hello' & console.log(obj)} >Remove</button></li>
+                            <li key={idx}>{obj.title} <button>Remove</button></li>
                         )
                     })}
                 </ul>
