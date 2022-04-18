@@ -2,6 +2,7 @@ import "./style.css"
 import { useState, useEffect } from "react"
 import toDoListData from "./data"
 import { Link } from "react-router-dom"
+import Header from "./components/Header"
 
 export default function App(){
     const [toDo, setToDo] = useState(toDoListData)
@@ -72,7 +73,6 @@ export default function App(){
                     <button type="submit" style={{display: 'none'}} >submit</button>
                 </form>
             </div>
-            <br/>
             <div>
                 <h2>To do Items: </h2>
                 <ul>
