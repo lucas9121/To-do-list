@@ -5,13 +5,25 @@ import { Link } from "react-router-dom"
 import Header from "./components/Header"
 
 export default function App(){
-    const [toDo, setToDo] = useState(toDoListData)
-    const [newData, setNewData] = useState({
-        title: '',
-        completed: false
-    })
-    const [taskComplete, setTaskComplete] = useState([])
+    // const [toDo, setToDo] = useState(toDoListData)
+    // const [newData, setNewData] = useState({
+    //     title: '',
+    //     completed: false
+    // })
+    // const [taskComplete, setTaskComplete] = useState([])
     // const [complete, setComplete] = useState(true)
+    const [toDo, setToDo] = useState({})
+    const [btn, setBtn] = useState(false)
+
+    useEffect(() => {
+        (async () => {
+            try {
+                const response = await fetch(`http://localhost:3000/`)
+            } catch(e) {
+                console.log(e)
+            }
+        })()
+    }, [btn])
 
     const handleChange = (event) => {
         // adding [] around the event.target.name makes the name variable in the target event the key of the object that is being made. So in this case the name is title because of the input name
