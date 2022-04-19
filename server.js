@@ -7,7 +7,7 @@ const taskController = require('./controllers/task')
 
 
 app.use(cors())
-app.use(expres.json())
+app.use(express.json())
 app.use('/tasks', taskController)
 
 
