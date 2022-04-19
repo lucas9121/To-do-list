@@ -13,7 +13,7 @@ export default function App(){
     const [newData, setNewData] = useState('')
     const [taskComplete, setTaskComplete] = useState([])
     const [complete, setComplete] = useState(true)
-    const [task, setTask] = useState({})
+    const [task, setTask] = useState([])
     const [btnPressed, setBtnPresed] = useState(false)
 
     useEffect(() => {
@@ -87,51 +87,6 @@ export default function App(){
     }, [toDo])
 
     return(
-        <div className="App">
-            <h1>My To Do List:</h1>
-            <div id="input-field">
-                <small>New Item</small>
-                <br />
-                <form onSubmit={handleSubmit}>
-                    <input
-                    type="text"
-                    name="title"
-                    id="todo"
-                    value={newData}
-                    onChange={handleChange}
-                    />
-                    <button type="submit" style={{display: 'none'}} >submit</button>
-                </form>
-            </div>
-            <div>
-                <h2>To do Items: </h2>
-                <ul>
-                    {task.map((todo, i) => {
-                        console.log('ForEach here!!!!!!!!!!!!')
-                        console.log(todo.title)
-                        console.log(todo.completed)
-                        return(
-                            todo.completed === false ?
-                            <li key={i}>{todo.title} <button>Completed</button> </li> : 
-                            null
-                        )
-                    })}
-                </ul>
-            </div>
-            <div>
-                <h2>Completed:</h2>
-                <ul>
-                    {taskComplete.map((obj, idx) => {
-                        console.log('completed hook!!!!!!!!')
-                        console.log(obj.title)
-                        return(
-                            <li key={idx}>{obj.title} <button>Remove</button></li>
-                        )
-                    })}
-                </ul>
-            </div>
-        </div>
-
         // <div className="App">
         //     <h1>My To Do List:</h1>
         //     <div id="input-field">
@@ -142,7 +97,7 @@ export default function App(){
         //             type="text"
         //             name="title"
         //             id="todo"
-        //             value={newData.title}
+        //             value={newData}
         //             onChange={handleChange}
         //             />
         //             <button type="submit" style={{display: 'none'}} >submit</button>
@@ -151,7 +106,7 @@ export default function App(){
         //     <div>
         //         <h2>To do Items: </h2>
         //         <ul>
-        //             {toDo.map((todo, i) => {
+        //             {task.map((todo, i) => {
         //                 console.log('ForEach here!!!!!!!!!!!!')
         //                 console.log(todo.title)
         //                 console.log(todo.completed)
@@ -176,5 +131,50 @@ export default function App(){
         //         </ul>
         //     </div>
         // </div>
+
+        <div className="App">
+            <h1>My To Do List:</h1>
+            <div id="input-field">
+                <small>New Item</small>
+                <br />
+                <form onSubmit={handleSubmit}>
+                    <input
+                    type="text"
+                    name="title"
+                    id="todo"
+                    value={newData.title}
+                    onChange={handleChange}
+                    />
+                    <button type="submit" style={{display: 'none'}} >submit</button>
+                </form>
+            </div>
+            <div>
+                <h2>To do Items: </h2>
+                <ul>
+                    {toDo.map((todo, i) => {
+                        console.log('ForEach here!!!!!!!!!!!!')
+                        console.log(todo.title)
+                        console.log(todo.completed)
+                        return(
+                            todo.completed === false ?
+                            <li key={i}>{todo.title} <button>Completed</button> </li> : 
+                            null
+                        )
+                    })}
+                </ul>
+            </div>
+            <div>
+                <h2>Completed:</h2>
+                <ul>
+                    {taskComplete.map((obj, idx) => {
+                        console.log('completed hook!!!!!!!!')
+                        console.log(obj.title)
+                        return(
+                            <li key={idx}>{obj.title} <button>Remove</button></li>
+                        )
+                    })}
+                </ul>
+            </div>
+        </div>
     )
 }
