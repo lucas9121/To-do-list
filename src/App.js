@@ -5,14 +5,14 @@ import { Link } from "react-router-dom"
 import Header from "./components/Header"
 
 export default function App(){
-    // const [toDo, setToDo] = useState(toDoListData)
-    // const [newData, setNewData] = useState({
-    //     title: '',
-    //     completed: false
-    // })
-    // const [taskComplete, setTaskComplete] = useState([])
-    // const [complete, setComplete] = useState(true)
-    const [toDo, setToDo] = useState({})
+    const [toDo, setToDo] = useState(toDoListData)
+    const [newData, setNewData] = useState({
+        title: '',
+        completed: false
+    })
+    const [taskComplete, setTaskComplete] = useState([])
+    const [complete, setComplete] = useState(true)
+    const [task, setTask] = useState({})
     const [btn, setBtn] = useState(false)
 
     useEffect(() => {
