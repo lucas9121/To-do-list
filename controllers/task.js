@@ -2,6 +2,18 @@ const express = require("express");
 const router = express.Router()
 const Task = require('../models/Task')
 
+
+// Seed
+
+router.get('/seed', (req,res) => {
+    const startTasks = [
+        {title: "Learn more about React", status: true},
+        {title: "Write a new Component", status: false},
+        {title:  "Add some style", status: false}
+    ]
+})
+
+
 // Get all tasks
 router.get('/', (req, res) => {
     Task.find({}, (err, foundTasks) => {
