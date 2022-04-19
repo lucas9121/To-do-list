@@ -19,7 +19,7 @@ export default function App(){
     useEffect(() => {
         (async () => {
             try {
-                const response = await fetch(`http://localhost:3000/`)
+                const response = await fetch(`http://localhost:3000/tasks`)
             } catch(e) {
                 console.log(e)
             }
