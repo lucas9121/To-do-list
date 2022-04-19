@@ -36,7 +36,7 @@ export default function App(){
     const handleSubmit = async (event) => {
         event.preventDefault()
         try {
-            const response = await fetch('http://localhost:3000/', {
+            const response = await fetch('http://localhost:3000/tasks', {
                 method: "POST",
                 body: JSON.stringify({
                     title: newData,
