@@ -1,6 +1,6 @@
 const { Schema, model } = require('./connection')
 
-const taskSchema = Schema({
+const taskSchema = new Schema({
     title: {
         require: true,
         type: String
