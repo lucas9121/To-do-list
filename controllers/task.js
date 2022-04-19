@@ -9,9 +9,17 @@ router.get('/seed', (req,res) => {
     const startTasks = [
         {title: "Learn more about React", status: true},
         {title: "Write a new Component", status: false},
-        {title:  "Add some style", status: false}
+        {title: "Add some style", status: false}
     ]
+    Task.deleteMany({}).then((data) => {
+        Task.create(startTasks).then((data) => {
+            res.json(data)
+        })
+    }).catch((e) => {
+        res.status(400).send(e)
+    })
 })
+
 
 
 // Get all tasks
