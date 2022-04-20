@@ -11,18 +11,19 @@ export default function App(){
         completed: false
     })
     const [newData, setNewData] = useState('')
-    const [taskComplete, setTaskComplete] = useState([])
+    const [taskComplete, setTaskComplete] = useState({})
     const [complete, setComplete] = useState(true)
-    const [tasks, setTasks] = useState([])
+    const [tasks, setTasks] = useState({})
     const [btnPressed, setBtnPresed] = useState(false)
 
     useEffect(() => {
         (async () => {
             try {
                 const response = await fetch(`http://localhost:3001/tasks`)
+                const data = await response.json()
                 console.log(response)
-                console.log(response.data)
-                setTasks(response.data)
+                console.log(response.body)
+                setTasks(data)
             } catch(e) {
                 console.log(e)
             }
@@ -79,15 +80,15 @@ export default function App(){
     //     toDoListData.push({title: newData, completed: false})
     // }
 
-    useEffect(() => {
-        completedStatus()
-        console.log('todoListaData is')
-        console.log(toDoListData)
-        console.log('data hook is ')
-        console.log(toDo)
-        console.log('new data hook is ')
-        console.log(newData)
-    }, [toDo])
+    // useEffect(() => {
+    //     completedStatus()
+    //     console.log('todoListaData is')
+    //     console.log(toDoListData)
+    //     console.log('data hook is ')
+    //     console.log(toDo)
+    //     console.log('new data hook is ')
+    //     console.log(newData)
+    // }, [toDo])
 
     return(
         <div className="App">
