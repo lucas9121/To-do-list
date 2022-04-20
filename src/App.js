@@ -30,6 +30,17 @@ export default function App(){
         })()
     }, [btnPressed])
 
+    const handleClick = async (statusChange, id) => {
+        try {
+            const response = await fetch(`http://localhost:3001/tasks/${id}`)
+            const data = await response.json()
+            console.log(data)
+            setBtnPresed(!btnPressed)
+        } catch(e) {
+            console.log(e)
+        }
+    }
+
     const handleChange = (event) => {
         // adding [] around the event.target.name makes the name variable in the target event the key of the object that is being made. So in this case the name is title because of the input name
         setNewData(event.target.value)
@@ -40,7 +51,7 @@ export default function App(){
     const handleSubmit = async (event) => {
         event.preventDefault()
         try {
-            const response = await fetch('http://localhost:3000/tasks', {
+            let newTask = await fetch('http://localhost:3001/tasks', {
                 method: "POST",
                 body: JSON.stringify({
                     title: newData,
@@ -111,10 +122,11 @@ export default function App(){
                 <h2>To do Items: </h2>
                 <ul>
                     {tasks.map((task, i) => {
-
+                        console.log('Task here!!!!!!!!!!!!!!!!!!!!!!!')
+                        console.log(task._id)
                         return(
                             task.status === false ?
-                            <li key={i}>{task.title} <button>Completed</button> </li> : 
+                            <li key={i}>{task.title} <button onClick={() => {handleClick(true, task._id)}} >Completed</button> </li> : 
                             null
                         )
                     })}
@@ -126,7 +138,7 @@ export default function App(){
                     {tasks.map((task, idx) => {
                         return(
                             task.status === true ?
-                            <li key={idx}>{task.title} <button>Remove</button></li>:
+                            <li key={idx}>{task.title} <button onClick={() => {handleClick(false, task._id)}}>Remove</button></li>:
                             null
                         )
                     })}
