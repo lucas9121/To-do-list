@@ -21,7 +21,7 @@ export default function App(){
             try {
                 const response = await fetch(`http://localhost:3001/tasks`)
                 const data = await response.json()
-                console.log(response)
+                console.log('UseEffect console!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
                 console.log(data)
                 setTasks(data)
             } catch(e) {
@@ -32,10 +32,19 @@ export default function App(){
 
     const handleClick = async (statusChange, id) => {
         try {
-            const response = await fetch(`http://localhost:3001/tasks/${id}`)
+            const response = await fetch(`http://localhost:3001/tasks/${id}`, {
+                method: "PUT",
+                body: JSON.stringify({status: statusChange})
+            })
             const data = await response.json()
-            // console.log('Id data!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
-            // console.log(data)
+            console.log('Data unchanged!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+            console.log(data)
+            console.log(data.status)
+            data.status = statusChange
+            console.log('data change!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+            console.log(response)
+            console.log(data)
+            console.log(data.status)
             setBtnPresed(!btnPressed)
         } catch(e) {
             console.log(e)
