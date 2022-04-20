@@ -22,7 +22,7 @@ export default function App(){
                 const response = await fetch(`http://localhost:3001/tasks`)
                 const data = await response.json()
                 console.log(response)
-                console.log(response.body)
+                console.log(data)
                 setTasks(data)
             } catch(e) {
                 console.log(e)
@@ -110,13 +110,11 @@ export default function App(){
             <div>
                 <h2>To do Items: </h2>
                 <ul>
-                    {tasks.map((todo, i) => {
-                        console.log('ForEach here!!!!!!!!!!!!')
-                        console.log(todo.title)
-                        console.log(todo.completed)
+                    {tasks.map((task, i) => {
+
                         return(
-                            todo.status === false ?
-                            <li key={i}>{todo.title} <button>Completed</button> </li> : 
+                            task.status === false ?
+                            <li key={i}>{task.title} <button>Completed</button> </li> : 
                             null
                         )
                     })}
@@ -125,11 +123,11 @@ export default function App(){
             <div>
                 <h2>Completed:</h2>
                 <ul>
-                    {taskComplete.map((obj, idx) => {
-                        console.log('completed hook!!!!!!!!')
-                        console.log(obj.title)
+                    {tasks.map((task, idx) => {
                         return(
-                            <li key={idx}>{obj.title} <button>Remove</button></li>
+                            task.status === true ?
+                            <li key={idx}>{task.title} <button>Remove</button></li>:
+                            null
                         )
                     })}
                 </ul>
