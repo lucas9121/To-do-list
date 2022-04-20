@@ -34,18 +34,27 @@ export default function App(){
         try {
             const response = await fetch(`http://localhost:3001/tasks/${id}`, {
                 method: "PUT",
+                header: {'Content-Type': 'application/json'},
                 body: JSON.stringify({status: statusChange})
             })
-            const data = await response.json()
+            // const data = await response.json()
             console.log('Data unchanged!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
-            console.log(data)
-            console.log(data.status)
-            data.status = statusChange
-            console.log('data change!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
-            console.log(response)
-            console.log(data)
-            console.log(data.status)
-            setBtnPresed(!btnPressed)
+            console.log(btnPressed)
+            console.log(response.json())
+            console.log(response.status)
+            if(response.status === 200){
+                setBtnPresed(!btnPressed)
+                console.log('data change!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+                console.log(response.json())
+                console.log(btnPressed)
+            } else (
+                console.log('something went wrong')
+            )
+            // console.log(data)
+            // console.log(data.status)
+            // data.status = statusChange
+            // console.log(data)
+            // console.log(data.status)
         } catch(e) {
             console.log(e)
         }
