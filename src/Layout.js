@@ -1,4 +1,5 @@
 import "./App"
+import { Outlet } from "react-router-dom";
 
 const Layout = () => {
     return (
@@ -7,7 +8,7 @@ const Layout = () => {
           <h1 className="title">My To Do List</h1> 
         </header>
         <main>
-          {/* <Outlet />  */}
+          <Outlet /> 
         </main>
       </div>
     );
