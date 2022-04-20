@@ -13,13 +13,16 @@ export default function App(){
     const [newData, setNewData] = useState('')
     const [taskComplete, setTaskComplete] = useState([])
     const [complete, setComplete] = useState(true)
-    const [task, setTask] = useState([])
+    const [tasks, setTasks] = useState([])
     const [btnPressed, setBtnPresed] = useState(false)
 
     useEffect(() => {
         (async () => {
             try {
-                const response = await fetch(`http://localhost:3000/tasks`)
+                const response = await fetch(`http://localhost:3001/tasks`)
+                console.log(response)
+                console.log(response.data)
+                setTasks(response.data)
             } catch(e) {
                 console.log(e)
             }
@@ -106,12 +109,12 @@ export default function App(){
             <div>
                 <h2>To do Items: </h2>
                 <ul>
-                    {task.map((todo, i) => {
+                    {tasks.map((todo, i) => {
                         console.log('ForEach here!!!!!!!!!!!!')
                         console.log(todo.title)
                         console.log(todo.completed)
                         return(
-                            todo.completed === false ?
+                            todo.status === false ?
                             <li key={i}>{todo.title} <button>Completed</button> </li> : 
                             null
                         )
