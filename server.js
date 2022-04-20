@@ -3,6 +3,7 @@ const express = require('express')
 const app = express()
 const cors = require('cors')
 const path = require('path');
+require('./models/connection')
 // const favicon = require('serve-favicon');
 const PORT = process.env.PORT || 3001
 const taskController = require('./controllers/task')
