@@ -34,8 +34,8 @@ export default function App(){
         try {
             const response = await fetch(`http://localhost:3001/tasks/${id}`)
             const data = await response.json()
-            console.log('Id data!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
-            console.log(data)
+            // console.log('Id data!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+            // console.log(data)
             setBtnPresed(!btnPressed)
         } catch(e) {
             console.log(e)
@@ -123,8 +123,8 @@ export default function App(){
                 <h2>To do Items: </h2>
                 <ul>
                     {tasks.map((task, i) => {
-                        console.log('Task here!!!!!!!!!!!!!!!!!!!!!!!')
-                        console.log(task._id)
+                        // console.log('Task here!!!!!!!!!!!!!!!!!!!!!!!')
+                        // console.log(task._id)
                         return(
                             task.status === false ?
                             <li key={i}>{task.title} <button onClick={() => {handleClick(true, task._id)}} >Completed</button> </li> : 
