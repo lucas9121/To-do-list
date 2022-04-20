@@ -11,9 +11,9 @@ export default function App(){
         completed: false
     })
     const [newData, setNewData] = useState('')
-    const [taskComplete, setTaskComplete] = useState({})
+    const [taskComplete, setTaskComplete] = useState([])
     const [complete, setComplete] = useState(true)
-    const [tasks, setTasks] = useState({})
+    const [tasks, setTasks] = useState([])
     const [btnPressed, setBtnPresed] = useState(false)
 
     useEffect(() => {
