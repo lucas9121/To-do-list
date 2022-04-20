@@ -1,7 +1,7 @@
 require('dotenv').config()
 const express = require('express')
 const app = express()
-// const cors = require('cors')
+const cors = require('cors')
 const path = require('path');
 require('./models/connection')
 // const favicon = require('serve-favicon');
@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 3001
 const taskController = require('./controllers/task')
 
 
-// app.use(cors())
+app.use(cors())
 app.use(express.json())
 app.use('/tasks', taskController)
 

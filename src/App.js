@@ -34,6 +34,7 @@ export default function App(){
         try {
             const response = await fetch(`http://localhost:3001/tasks/${id}`)
             const data = await response.json()
+            console.log('Id data!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
             console.log(data)
             setBtnPresed(!btnPressed)
         } catch(e) {
