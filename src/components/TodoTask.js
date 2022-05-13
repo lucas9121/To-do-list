@@ -1,5 +1,5 @@
 import { handleClick } from "../utilities/task-api"
-export default function Todo({tasks}) {
+export default function Todo({tasks, btnPressed, setBtnPresed}) {
     return (
         <div>
             <h2>To do Items: </h2>
@@ -7,7 +7,7 @@ export default function Todo({tasks}) {
                 {tasks.map((task, i) => {
                     return(
                         task.status === false ?
-                        <li key={i}>{task.title} <button onClick={() => {handleClick(true, task._id)}} >Completed</button> </li> : 
+                        <li key={i}>{task.title} <button onClick={() => {handleClick(true, task._id); setBtnPresed(!btnPressed)}} >Completed</button> </li> : 
                         null
                     )
                 })}
