@@ -4,6 +4,7 @@ import toDoListData from "./data"
 import { Link } from "react-router-dom"
 import Header from "./components/Header"
 import Input from "./components/Input"
+import Todo from "./components/TodoItems"
 
 export default function App(){
     const [newData, setNewData] = useState('')
@@ -49,18 +50,7 @@ export default function App(){
         <div className="App">
             <Header />
             <Input handleSubmit={handleSubmit} newData={newData} setNewData={setNewData} />
-            <div>
-                <h2>To do Items: </h2>
-                <ul>
-                    {tasks.map((task, i) => {
-                        return(
-                            task.status === false ?
-                            <li key={i}>{task.title} <button onClick={() => {handleClick(true, task._id)}} >Completed</button> </li> : 
-                            null
-                        )
-                    })}
-                </ul>
-            </div>
+            <Todo tasks={tasks} />
             <div>
                 <h2>Completed:</h2>
                 <ul>
