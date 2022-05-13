@@ -34,43 +34,30 @@ export default function App(){
         try {
             const response = await fetch(`http://localhost:3001/tasks/${id}`, {
                 method: "PUT",
-                header: {'Content-Type': 'application/json'},
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
                 body: JSON.stringify({status: statusChange})
             })
-            // const data = await response.json()
-            console.log('Data unchanged!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
-            console.log(btnPressed)
-            console.log(response.json())
-            console.log(response.status)
             if(response.status === 200){
                 setBtnPresed(!btnPressed)
-                console.log('data change!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
-                console.log(response.json())
-                console.log(btnPressed)
             } else (
                 console.log('something went wrong')
             )
-            // console.log(data)
-            // console.log(data.status)
-            // data.status = statusChange
-            // console.log(data)
-            // console.log(data.status)
         } catch(e) {
             console.log(e)
         }
     }
 
     const handleChange = (event) => {
-        // adding [] around the event.target.name makes the name variable in the target event the key of the object that is being made. So in this case the name is title because of the input name
         setNewData(event.target.value)
-        console.log(newData)
-        console.log('Data here!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
     }
 
     const handleSubmit = async (event) => {
         event.preventDefault()
         try {
-            let newTask = await fetch('http://localhost:3001/tasks', {
+            await fetch('http://localhost:3001/tasks', {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json'
