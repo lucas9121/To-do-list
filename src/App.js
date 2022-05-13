@@ -62,7 +62,7 @@ export default function App(){
 
     const handleChange = (event) => {
         // adding [] around the event.target.name makes the name variable in the target event the key of the object that is being made. So in this case the name is title because of the input name
-        setNewData(event.target.value)
+        setNewData2({[event.target.name]: event.target.value})
         console.log(newData)
         console.log('Data here!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
     }
@@ -131,7 +131,7 @@ export default function App(){
                     type="text"
                     name="title"
                     id="todo"
-                    value={newData}
+                    value={newData.title}
                     onChange={handleChange}
                     />
                     <button type="submit" style={{display: 'none'}} >submit</button>
