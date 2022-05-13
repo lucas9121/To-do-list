@@ -5,6 +5,7 @@ import { Link } from "react-router-dom"
 import Header from "./components/Header"
 import Input from "./components/Input"
 import Todo from "./components/TodoItems"
+import Completed from "./components/CompletedTask"
 
 export default function App(){
     const [newData, setNewData] = useState('')
@@ -50,27 +51,8 @@ export default function App(){
         <div className="App">
             <Header />
             <Input handleSubmit={handleSubmit} newData={newData} setNewData={setNewData} />
-            <Todo tasks={tasks} />
-            <div>
-                <h2>Completed:</h2>
-                <ul>
-                    {tasks.map((task, idx) => {
-                        return(
-                            task.status === true ?
-                            <li key={idx}>{task.title} <button onClick={() => {handleClick(false, task._id)}}>To do</button> <button onClick={() => {
-                                try {
-                                    fetch(`/tasks/${task._id}`, {method: 'DELETE'})
-                                } catch(e) {
-                                    console.log(e)
-                                } finally {
-                                    setBtnPresed(!btnPressed)
-                                }
-                            }}>Remove</button></li>:
-                            null
-                        )
-                    })}
-                </ul>
-            </div>
+            <Todo tasks={tasks} btnPressed={btnPressed} setBtnPresed={setBtnPresed} />
+            <Completed tasks={tasks} btnPressed={btnPressed} setBtnPresed={setBtnPresed} />
         </div>
     )
 }
