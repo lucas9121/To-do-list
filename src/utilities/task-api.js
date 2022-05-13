@@ -8,11 +8,6 @@ export async function handleClick(statusChange, id){
             },
             body: JSON.stringify({status: statusChange})
         })
-        // if(response.status === 200){
-        //     setBtnPresed(!btnPressed)
-        // } else (
-        //     console.log('something went wrong')
-        // )
     } catch(e) {
         console.log(e)
     }
