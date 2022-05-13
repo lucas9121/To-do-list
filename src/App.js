@@ -62,7 +62,7 @@ export default function App(){
 
     const handleChange = (event) => {
         // adding [] around the event.target.name makes the name variable in the target event the key of the object that is being made. So in this case the name is title because of the input name
-        setNewData2({[event.target.name]: event.target.value})
+        setNewData(event.target.value)
         console.log(newData)
         console.log('Data here!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
     }
@@ -72,11 +72,16 @@ export default function App(){
         try {
             let newTask = await fetch('http://localhost:3001/tasks', {
                 method: "POST",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
                 body: JSON.stringify({
                     title: newData,
                     status: false
                 })
             })
+            setNewData('')
+            setBtnPresed(!btnPressed)
         } catch(e) {
             console.log(e)
         }
@@ -131,7 +136,7 @@ export default function App(){
                     type="text"
                     name="title"
                     id="todo"
-                    value={newData.title}
+                    value={newData.value}
                     onChange={handleChange}
                     />
                     <button type="submit" style={{display: 'none'}} >submit</button>
