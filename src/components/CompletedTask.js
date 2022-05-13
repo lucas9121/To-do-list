@@ -7,7 +7,7 @@ export default function Completed({tasks, btnPressed, setBtnPresed}) {
                 {tasks.map((task, idx) => {
                     return(
                         task.status === true ?
-                        <li key={idx}>{task.title} <button onClick={() => {handleClick(false, task._id)}}>To do</button> <button onClick={() => {
+                        <li key={idx}>{task.title} <button onClick={() => {handleClick(false, task._id); setBtnPresed(!btnPressed)}}>To do</button> <button onClick={() => {
                             try {
                                 fetch(`/tasks/${task._id}`, {method: 'DELETE'})
                             } catch(e) {
