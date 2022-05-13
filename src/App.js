@@ -70,7 +70,7 @@ export default function App(){
 
     return(
         <div className="App">
-            <h1>My To Do List:</h1>
+            <Header />
             <Input handleSubmit={handleSubmit} newData={newData} setNewData={setNewData} />
             <div>
                 <h2>To do Items: </h2>
