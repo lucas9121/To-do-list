@@ -12,7 +12,7 @@ export default function App(){
     useEffect(() => {
         (async () => {
             try {
-                const response = await fetch(`http://localhost:3001/tasks`)
+                const response = await fetch(`/tasks`)
                 const data = await response.json()
                 console.log('UseEffect console!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
                 console.log(data)
@@ -25,7 +25,7 @@ export default function App(){
 
     const handleClick = async (statusChange, id) => {
         try {
-            const response = await fetch(`http://localhost:3001/tasks/${id}`, {
+            const response = await fetch(`/tasks/${id}`, {
                 method: "PUT",
                 headers: {
                     'Accept': 'application/json',
@@ -50,7 +50,7 @@ export default function App(){
     const handleSubmit = async (event) => {
         event.preventDefault()
         try {
-            await fetch('http://localhost:3001/tasks', {
+            await fetch('/tasks', {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json'
