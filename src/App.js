@@ -74,6 +74,16 @@ export default function App(){
         }
     }
 
+    // const handleDelete = (id) => {
+    //     try {
+    //         fetch(`/tasks/${id}`, {method: 'DELETE'})
+    //     } catch(e) {
+    //         console.log(e)
+    //     } finally {
+    //         setBtnPresed(!btnPressed)
+    //     }
+    // }
+
     const handleSubmit2 = (event) => {
         event.preventDefault()
         setToDo([...toDo, newData])
@@ -133,8 +143,6 @@ export default function App(){
                 <h2>To do Items: </h2>
                 <ul>
                     {tasks.map((task, i) => {
-                        // console.log('Task here!!!!!!!!!!!!!!!!!!!!!!!')
-                        // console.log(task._id)
                         return(
                             task.status === false ?
                             <li key={i}>{task.title} <button onClick={() => {handleClick(true, task._id)}} >Completed</button> </li> : 
@@ -149,7 +157,15 @@ export default function App(){
                     {tasks.map((task, idx) => {
                         return(
                             task.status === true ?
-                            <li key={idx}>{task.title} <button onClick={() => {handleClick(false, task._id)}}>Remove</button></li>:
+                            <li key={idx}>{task.title} <button onClick={() => {handleClick(false, task._id)}}>To do</button> <button onClick={() => {
+                                try {
+                                    fetch(`/tasks/${task._id}`, {method: 'DELETE'})
+                                } catch(e) {
+                                    console.log(e)
+                                } finally {
+                                    setBtnPresed(!btnPressed)
+                                }
+                            }}>Remove</button></li>:
                             null
                         )
                     })}
