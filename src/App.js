@@ -1,10 +1,8 @@
 import "./style.css"
-import { useState, useEffect, useRef } from "react"
-import toDoListData from "./data"
-import { Link } from "react-router-dom"
+import { useState, useEffect} from "react"
 import Header from "./components/Header"
 import Input from "./components/Input"
-import Todo from "./components/TodoItems"
+import Todo from "./components/TodoTask"
 import Completed from "./components/CompletedTask"
 
 export default function App(){
