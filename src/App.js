@@ -5,14 +5,7 @@ import { Link } from "react-router-dom"
 import Header from "./components/Header"
 
 export default function App(){
-    const [toDo, setToDo] = useState(toDoListData)
-    const [newData2, setNewData2] = useState({
-        title: '',
-        completed: false
-    })
     const [newData, setNewData] = useState('')
-    const [taskComplete, setTaskComplete] = useState([])
-    const [complete, setComplete] = useState(true)
     const [tasks, setTasks] = useState([])
     const [btnPressed, setBtnPresed] = useState(false)
 
@@ -74,54 +67,6 @@ export default function App(){
         }
     }
 
-    // const handleDelete = (id) => {
-    //     try {
-    //         fetch(`/tasks/${id}`, {method: 'DELETE'})
-    //     } catch(e) {
-    //         console.log(e)
-    //     } finally {
-    //         setBtnPresed(!btnPressed)
-    //     }
-    // }
-
-    const handleSubmit2 = (event) => {
-        event.preventDefault()
-        setToDo([...toDo, newData])
-    }
-
-    const completedStatus = () => {
-        toDo.forEach((todo) => {
-            // checks if task is already in the array
-            if(taskComplete.find((obj) => obj === todo)){
-                return
-            } else if(todo.completed === true){
-                setTaskComplete([...taskComplete, todo])
-            }
-        })
-    }
-    // const taskBtn = (task) => {
-    //     console.log('function works')
-    //     let item = toDo.find(obj => obj === task)
-    //     if(item){
-    //         console.log('here')
-    //     }
-    // }
-
-    // const addData = () => {
-    //     setNewData(input)
-    //     toDoListData.push({title: newData, completed: false})
-    // }
-
-    // useEffect(() => {
-    //     completedStatus()
-    //     console.log('todoListaData is')
-    //     console.log(toDoListData)
-    //     console.log('data hook is ')
-    //     console.log(toDo)
-    //     console.log('new data hook is ')
-    //     console.log(newData)
-    // }, [toDo])
-
     return(
         <div className="App">
             <h1>My To Do List:</h1>
@@ -172,50 +117,5 @@ export default function App(){
                 </ul>
             </div>
         </div>
-
-        // <div className="App">
-        //     <h1>My To Do List:</h1>
-        //     <div id="input-field">
-        //         <small>New Item</small>
-        //         <br />
-        //         <form onSubmit={handleSubmit}>
-        //             <input
-        //             type="text"
-        //             name="title"
-        //             id="todo"
-        //             value={newData.title}
-        //             onChange={handleChange}
-        //             />
-        //             <button type="submit" style={{display: 'none'}} >submit</button>
-        //         </form>
-        //     </div>
-        //     <div>
-        //         <h2>To do Items: </h2>
-        //         <ul>
-        //             {toDo.map((todo, i) => {
-        //                 console.log('ForEach here!!!!!!!!!!!!')
-        //                 console.log(todo.title)
-        //                 console.log(todo.completed)
-        //                 return(
-        //                     todo.completed === false ?
-        //                     <li key={i}>{todo.title} <button>Completed</button> </li> : 
-        //                     null
-        //                 )
-        //             })}
-        //         </ul>
-        //     </div>
-        //     <div>
-        //         <h2>Completed:</h2>
-        //         <ul>
-        //             {taskComplete.map((obj, idx) => {
-        //                 console.log('completed hook!!!!!!!!')
-        //                 console.log(obj.title)
-        //                 return(
-        //                     <li key={idx}>{obj.title} <button>Remove</button></li>
-        //                 )
-        //             })}
-        //         </ul>
-        //     </div>
-        // </div>
     )
 }
