@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from "react"
 import toDoListData from "./data"
 import { Link } from "react-router-dom"
 import Header from "./components/Header"
+import Input from "./components/Input"
 
 export default function App(){
     const [newData, setNewData] = useState('')
@@ -70,20 +71,7 @@ export default function App(){
     return(
         <div className="App">
             <h1>My To Do List:</h1>
-            <div id="input-field">
-                <small>New Item</small>
-                <br />
-                <form onSubmit={handleSubmit}>
-                    <input
-                    type="text"
-                    name="title"
-                    id="todo"
-                    value={newData.value}
-                    onChange={handleChange}
-                    />
-                    <button type="submit" style={{display: 'none'}} >submit</button>
-                </form>
-            </div>
+            <Input handleSubmit={handleSubmit} newData={newData} setNewData={setNewData} />
             <div>
                 <h2>To do Items: </h2>
                 <ul>
