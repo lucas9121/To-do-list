@@ -1,5 +1,5 @@
 import { handleClick } from "../utilities/task-api"
-export default function Todo() {
+export default function Todo({tasks}) {
     return (
         <div>
             <h2>To do Items: </h2>
