@@ -1,5 +1,5 @@
 import { handleClick } from "../utilities/task-api"
-export default function Completed({tasks}) {
+export default function Completed({tasks, btnPressed, setBtnPresed}) {
     return (
         <div>
             <h2>Completed:</h2>
